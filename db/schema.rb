@@ -11,18 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140628072240) do
+ActiveRecord::Schema.define(version: 20140628074257) do
 
   create_table "form_data", force: true do |t|
     t.string  "value"
-    t.integer "formfield_id"
+    t.integer "form_field_id"
   end
 
-  add_index "form_data", ["formfield_id"], name: "index_form_data_on_formfield_id", using: :btree
+  add_index "form_data", ["form_field_id"], name: "index_form_data_on_form_field_id", using: :btree
 
   create_table "form_fields", force: true do |t|
     t.string  "name"
     t.integer "form_id"
+    t.string  "field_type"
   end
 
   add_index "form_fields", ["form_id"], name: "index_form_fields_on_form_id", using: :btree
