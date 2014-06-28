@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224203311) do
+ActiveRecord::Schema.define(version: 20140628072240) do
+
+  create_table "form_data", force: true do |t|
+    t.string  "value"
+    t.integer "formfield_id"
+  end
+
+  add_index "form_data", ["formfield_id"], name: "index_form_data_on_formfield_id", using: :btree
+
+  create_table "form_fields", force: true do |t|
+    t.string  "name"
+    t.integer "form_id"
+  end
+
+  add_index "form_fields", ["form_id"], name: "index_form_fields_on_form_id", using: :btree
+
+  create_table "forms", force: true do |t|
+    t.string  "name"
+    t.integer "user_id"
+  end
+
+  add_index "forms", ["user_id"], name: "index_forms_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -29,7 +50,7 @@ ActiveRecord::Schema.define(version: 20140224203311) do
     t.string   "name"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
