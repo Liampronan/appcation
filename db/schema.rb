@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140628233648) do
+ActiveRecord::Schema.define(version: 20140629034929) do
+
+  create_table "field_attributes", force: true do |t|
+    t.integer "name"
+    t.integer "tag_id"
+  end
 
   create_table "form_data", force: true do |t|
     t.string  "value"
@@ -24,6 +29,7 @@ ActiveRecord::Schema.define(version: 20140628233648) do
     t.string  "name"
     t.integer "form_id"
     t.integer "field_type"
+    t.integer "field_tag"
   end
 
   add_index "form_fields", ["form_id"], name: "index_form_fields_on_form_id", using: :btree

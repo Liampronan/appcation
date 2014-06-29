@@ -5,7 +5,8 @@
 #  id         :integer          not null, primary key
 #  name       :string(255)
 #  form_id    :integer
-#  field_type :string(255)
+#  field_type :integer
+#  field_tag  :integer
 #
 
 require 'rails_helper'

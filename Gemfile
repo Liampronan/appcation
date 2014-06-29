@@ -12,6 +12,8 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'annotate'
+#safely use 'attribute' in table cols
+gem 'safe_attributes'
 group :development do
   gem 'pry'
   gem 'pry-debugger'
